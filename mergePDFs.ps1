@@ -1,6 +1,7 @@
-#Benötigt das Modul PSWritePDF
+#BenÃ¶tigt das Modul PSWritePDF
 #Falls nicht mehr vorhanden, "Install-Module PSWritePDF -Force"
 #Falls OutOfDate, "Update-Module PSWritePDF"
+# author = lucasscodes
 
 #teste ob Modul installiert ist
 if ((Get-Command -Module PSWritePDF).Length -eq 0) {
@@ -52,7 +53,7 @@ $ordner = $inputOrdner;
 $target1 = "0987654321yaxb0987654321.pdf";
 $target2 = "0987654321ybxa0987654321.pdf";
 
-#Um zu wissen welchen Speicher ich nutzen muss und ob ich im Außnahmefall mit dem ersten Element bin.
+#Um zu wissen welchen Speicher ich nutzen muss und ob ich im AuÃŸnahmefall mit dem ersten Element bin.
 $counter = -1;
 
 #Erzeugt die Pfade zu den Zwischenspeichern und der ersten PDF
@@ -60,15 +61,15 @@ $o1 = -join($ordner, $target1);
 $o2 = -join($ordner, $target2);
 $i1 = -join($ordner, $erstername);
 
-#Versuch PDFs von vorherigen Durchgängen zu finden und wegzuräumen, da sie wiederverwendet werden
+#Versuch PDFs von vorherigen DurchgÃ¤ngen zu finden und wegzurÃ¤umen, da sie wiederverwendet werden
 try {Remove-Item -Path $o1, Remove-Item -Path $o2}
 catch {}
 
-#für jeden Namen ab NameNo2
+#fÃ¼r jeden Namen ab NameNo2
 foreach ($name in $namen) {
   #Gib Info raus
-  write-host ($counter+2)"/"$len"ter Merge wird durchgeführt...";
-  #Berechne dynamisch den Pfad der neu anzufügenden PDF
+  write-host ($counter+2)"/"$len"ter Merge wird durchgefÃ¼hrt...";
+  #Berechne dynamisch den Pfad der neu anzufÃ¼genden PDF
   $i2 = -join($ordner, $name);
   #Falls erster Schritt, merge die ersten beiden PDFs
   if ($counter -eq -1) {
@@ -86,7 +87,7 @@ foreach ($name in $namen) {
 #Letzten Inkrement negieren, somit gelten Z.47/Z.50 Bedingungen vom letzten Element wieder
 $counter--;
 
-#Jenachdem welche Bedingung galt, nutze letzten verwendeten Speicher als Ergebniss und lösche den anderen.
+#Jenachdem welche Bedingung galt, nutze letzten verwendeten Speicher als Ergebniss und lÃ¶sche den anderen.
 if (($counter % 2) -eq 0) {
   Rename-Item -Path $o2 -NewName $inputZielName;
   Remove-Item -Path $o1;}
