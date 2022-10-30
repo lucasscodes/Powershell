@@ -1,5 +1,7 @@
 #Source: https://www.reddit.com/r/PowerShell/comments/9zebvv/comment/eaic9mc/?utm_source=share&utm_medium=web2x&context=3
 #Seems plausible that you could run a script on (the occurrence of) one of these events to collect more detailed information.
+#Seems outdated in 2022, can be 4-6 yrs. old.
+#THIS IS NOT MY OWN WORK!
 $EventLog = New-Object System.Diagnostics.Eventing.Reader.EventLogConfiguration 'Microsoft-Windows-DriverFrameworks-UserMode/Operational'
 
 if($EventLog.IsEnabled -eq $True)
